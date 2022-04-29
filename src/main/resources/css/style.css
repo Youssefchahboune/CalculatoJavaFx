@@ -1,0 +1,7 @@
+.list-cell {
+    -fx-control-inner-background: #5c5c5c ;
+    -fx-control-inner-background-alt: derive(-fx-control-inner-background, 10%);
+}
+.button{
+    -fx-font-size: 20px;
+}
