@@ -1,6 +1,7 @@
 package com.example.lab10java;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -12,7 +13,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.EventListener;
+
 public class HelloApplication extends Application {
+
+    ListView<String> history;
+    Label expression;
 
     public static void main(String[] args){ launch();}
 
@@ -24,11 +30,11 @@ public class HelloApplication extends Application {
         stage.setMinWidth(500);
         stage.setMinHeight(427);
 
-        ListView<String> history = new ListView<>();
+        history = new ListView<>();
         history.setMinWidth(200);
 
 
-        Label expression = new Label("3214+65-98");
+        expression = new Label();
         expression.setAlignment(Pos.CENTER);
         expression.setMinHeight(100);
 
@@ -49,15 +55,11 @@ public class HelloApplication extends Application {
         calculatorButtons.add(createCalculatorButton("0"),1,4);
         calculatorButtons.add(createCalculatorButton("c"),0,4);
 
-
         VBox calculator = new VBox(expression,calculatorButtons);
         calculator.setAlignment(Pos.CENTER);
         calculator.setMinWidth(300);
 
-
         HBox container = new HBox(history,calculator);
-
-
 
         Scene scene = new Scene(container);
         stage.setScene(scene);
@@ -69,7 +71,19 @@ public class HelloApplication extends Application {
         Button newButton = new Button(character);
         newButton.setMinWidth(75);
         newButton.setMinHeight(75);
-        //newButton.setOnAction();
+        newButton.setOnAction(actionEvent ->  {
+            if (newButton.getText().equalsIgnoreCase("c"))
+            {
+                expression.setText("");
+            }
+            else if (newButton.getText().equalsIgnoreCase("=")){
+                history.getItems().add(expression.getText());
+            }
+            else {
+                expression.setText(expression.getText() + newButton.getText());
+            }
+
+        });
 
         return newButton;
     }
