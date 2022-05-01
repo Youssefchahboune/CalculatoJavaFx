@@ -38,7 +38,11 @@ public class HelloApplication extends Application {
         history.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                if (!(expression.getText().isEmpty())){
+                    expression.setText("");
+                }
                 expression.setText(t1);
+                cPressed = false;
                 styleLabel();
             }
         });
@@ -47,7 +51,7 @@ public class HelloApplication extends Application {
         expression.setAlignment(Pos.CENTER);
         expression.setMinHeight(100);
         expression.setMinWidth(300);
-        expression.setStyle(" -fx-font-size: 15px;");
+        expression.setStyle(" -fx-font-size: 20px;");
 
         GridPane calculatorButtons = new GridPane();
 
@@ -67,11 +71,10 @@ public class HelloApplication extends Application {
         calculatorButtons.add(createCalculatorButton2("c"),0,4);
 
         VBox calculator = new VBox(expression,calculatorButtons);
-        calculator.setAlignment(Pos.CENTER);
         calculator.setMinWidth(300);
 
         HBox container = new HBox(history,calculator);
-        container.setStyle("-fx-background-color: #424242");
+        container.setStyle("-fx-background-color: black");
 
         Scene scene = new Scene(container);
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());

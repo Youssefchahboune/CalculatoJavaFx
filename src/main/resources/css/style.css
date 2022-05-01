@@ -4,4 +4,10 @@
 }
 .button{
     -fx-font-size: 20px;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-border : none;
+    -fx-border-width: 0px;
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
 }
