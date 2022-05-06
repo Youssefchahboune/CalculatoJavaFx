@@ -10,4 +10,9 @@ public class Addition extends Operator{
 
         return result;
     }
+
+    @Override
+    public int priority() {
+        return 1;
+    }
 }

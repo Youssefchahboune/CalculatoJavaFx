@@ -8,4 +8,6 @@ public abstract class Operator implements Token{
     }
 
     abstract public Operand evaluate(Operand op1, Operand op2);
+
+    abstract public int priority();
 }

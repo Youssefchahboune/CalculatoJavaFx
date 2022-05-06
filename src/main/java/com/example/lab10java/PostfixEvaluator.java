@@ -19,7 +19,6 @@ public class PostfixEvaluator {
                 stackThatHoldOperand.push((Operand) expression.get(i));
             }
             else {
-
                 if (stackThatHoldOperand.size() < 2){
                     throw new ArithmeticException("Your expression is incomplete");
                 }
@@ -27,7 +26,7 @@ public class PostfixEvaluator {
                 Operand op2 = stackThatHoldOperand.pop();
                 Operator operator = (Operator) expression.get(i);
 
-                Operand result = operator.evaluate(op1,op2);
+                Operand result = operator.evaluate(op2,op1);
 
                 stackThatHoldOperand.push(result);
 
