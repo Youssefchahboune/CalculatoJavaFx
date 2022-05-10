@@ -102,24 +102,30 @@ public class HelloApplication extends Application {
             else if (newButton.getText().equalsIgnoreCase("=") && !(expression.getText().isEmpty()) ){
 
                 if (isExpressionCorrect(expression.getText())){
-                    //Evaluate expression
+
+                    ArithmeticExpression arithmeticExpression = new ArithmeticExpression(expression.getText());
 
                     history.getItems().add(expression.getText());
+
+                    expression.setText(String.valueOf(arithmeticExpression.evaluate()));
+
                     cPressed = true;
-                    styleLabel();
+
+                    expression.getStyleClass().clear();
+                    expression.getStyleClass().addAll("lbl","lbl-primary");
+
                 }
             }
             else if (newButton.getText().equalsIgnoreCase("=") && expression.getText().isEmpty()){
                 return;
             }
             else {
-                if (isExpressionCorrect(expression.getText())){
 
-                    if(cPressed){
-                        cPressed = false;
-                        expression.setText("");
-                    }
+                if(cPressed){
+                    cPressed = false;
+                    expression.setText("");
                 }
+
                 expression.setText(expression.getText() + newButton.getText());
                 styleLabel();
 
@@ -147,11 +153,17 @@ public class HelloApplication extends Application {
             else if (newButton.getText().equalsIgnoreCase("=") && !(expression.getText().isEmpty()) ){
 
                 if (isExpressionCorrect(expression.getText())){
-                    //Evaluate expression
+
+                    ArithmeticExpression arithmeticExpression = new ArithmeticExpression(expression.getText());
 
                     history.getItems().add(expression.getText());
+
+                    expression.setText(String.valueOf(arithmeticExpression.evaluate()));
+
                     cPressed = true;
-                    styleLabel();
+
+                    expression.getStyleClass().clear();
+                    expression.getStyleClass().addAll("lbl","lbl-primary");
                 }
             }
             else if (newButton.getText().equalsIgnoreCase("=") && expression.getText().isEmpty()){
